@@ -53,7 +53,7 @@ sudo ln -s ~mc ~mc/backup_dir
 Copy and paste this block:
 ```bash
 sudo cp *.sh ~mc/
-sudo chown -h mc:nogroup ~mc/*
+sudo chown -h mc:nobody ~mc/*
 sudo cp systemd/* /etc/systemd/system/
 ```
 ## Java Edition setup
@@ -68,7 +68,7 @@ echo java -Xms1024M -Xmx2048M -jar server.jar nogui | sudo tee ~mc/java/MC/start
 Copy and paste this block:
 ```bash
 sudo chmod +x ~mc/java/MC/start.bat
-sudo chown -R mc:nogroup ~mc/java
+sudo chown -R mc:nobody ~mc/java
 sudo systemctl enable mc@MC.socket mc@MC.service mc-backup@MC.timer --now
 ```
 If you want to automatically remove backups more than 2-weeks-old to save storage:
@@ -97,7 +97,7 @@ for file in ~mc/bedrock/MCBE/*.{json,properties}; do sudo sed -i s/$'\r'$// "$fi
 ```
 Copy and paste this block:
 ```bash
-sudo chown -R mc:nogroup ~mc/bedrock
+sudo chown -R mc:nobody ~mc/bedrock
 sudo systemctl enable mcbe@MCBE.socket mcbe@MCBE.service mcbe-backup@MCBE.timer mcbe-getzip.timer mcbe-autoupdate@MCBE.service --now
 ```
 If you want to automatically remove backups more than 2-weeks-old to save storage:
@@ -187,7 +187,7 @@ sudo ./MoveServers.sh
 Copy and paste this block:
 ```bash
 sudo cp *.{sed,sh} ~mc/
-sudo chown -h mc:nogroup ~mc/*
+sudo chown -h mc:nobody ~mc/*
 sudo cp systemd/* /etc/systemd/system/
 ```
 Reenable the services you use:

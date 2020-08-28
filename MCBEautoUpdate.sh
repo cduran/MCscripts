@@ -62,10 +62,10 @@ if [ -n "$service" ]; then
 		trap 'echo fail > "$server_dir/version"' ERR
 		sudo systemctl start "mcbe-backup@$instance"
 		sudo systemctl stop "$service"
-		trap 'sudo chown -R mc:nogroup "$server_dir"; sudo systemctl start "$service"' ERR
+		trap 'sudo chown -R mc:nobody "$server_dir"; sudo systemctl start "$service"' ERR
 		# MCBEupdate.sh reads y asking if you stopped the server
 		echo y | sudo "$dir/MCBEupdate.sh" "$server_dir" "$minecraft_zip"
-		sudo chown -R mc:nogroup "$server_dir"
+		sudo chown -R mc:nobody "$server_dir"
 		sudo systemctl start "$service"
 	fi
 else
@@ -78,6 +78,6 @@ else
 	trap 'sudo rm -rf "$server_dir"' ERR
 	sudo unzip "$minecraft_zip" -d "$server_dir"
 	echo "$current_ver" > "$server_dir/version"
-	sudo chown -R mc:nogroup "$server_dir"
+	sudo chown -R mc:nobody "$server_dir"
 	echo "@@@ Don't forget to edit $server_dir/server.properties @@@"
 fi

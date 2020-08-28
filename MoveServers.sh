@@ -53,11 +53,11 @@ done
 
 if [ -n "${java[*]}" ]; then
 	sudo mkdir ~mc/java
-	sudo chown mc:nogroup ~mc/java
+	sudo chown mc:nobody ~mc/java
 	if [ ! ~mc/backup_dir -ef ~mc ]; then
 		sudo mkdir ~mc/backup_dir/java
 		# Some file systems do not have owners
-		sudo chown -f mc:nogroup ~mc/backup_dir/java || true
+		sudo chown -f mc:nobody ~mc/backup_dir/java || true
 	fi
 fi
 for server in "${java[@]}"; do
@@ -69,11 +69,11 @@ done
 
 if [ -n "${bedrock[*]}" ]; then
 	sudo mkdir ~mc/bedrock
-	sudo chown mc:nogroup ~mc/bedrock
+	sudo chown mc:nobody ~mc/bedrock
 	if [ ! ~mc/backup_dir -ef ~mc ]; then
 		sudo mkdir ~mc/backup_dir/bedrock
 		# Some file systems do not have owners
-		sudo chown -f mc:nogroup ~mc/backup_dir/bedrock || true
+		sudo chown -f mc:nobody ~mc/backup_dir/bedrock || true
 	fi
 fi
 for server in "${bedrock[@]}"; do
